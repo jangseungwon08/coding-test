@@ -14,6 +14,9 @@ def solution(s):
     return answer
 '''
 #다른사람 풀이
+#sorted함수는 list뿐 아니라 이터러블한 객체가 있으면 정렬가능하다. 
+#따라서 Zbcdefg를 sorted로 내림차순 정렬하면 ["g","f","e","d","c","b","Z"]가 나오는데
+#여기서 .join을 사용해서 문자열로 바꿔줘서"gfedcbZ"가 나온다..
 def solution(s):
     answer = ''.join(sorted(s, reverse =  True))
     return answer
