@@ -1,3 +1,4 @@
+'''
 def solution(s):
     answer = ''
     #리스트 형식으로 담아줄 m을 구한다.
@@ -10,4 +11,9 @@ def solution(s):
         m.sort(reverse = True)
         #그 후 answer에 join함수를 사용하여 str형식으로 변형하여준다.
         answer = ''.join(m)
+    return answer
+'''
+#다른사람 풀이
+def solution(s):
+    answer = ''.join(sorted(s, reverse =  True))
     return answer
