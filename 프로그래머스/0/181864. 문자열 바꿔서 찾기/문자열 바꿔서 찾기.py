@@ -1,6 +1,7 @@
 def solution(myString, pat):
     answer = 0
     temp_str = ''
+    #replace함수를 사용하여 풀수도 있다.
     #myString을 for문을 돌린다.
     for i in myString:
         #i의 값이 A이면 B로 바꿔주고
