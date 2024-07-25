@@ -1,5 +1,6 @@
 def solution(food):
     answer = ''
+    '''
     #1부터 len(food)-1 까지
     for i in range(1,len(food)):
         #food i번째 인덱스value값이 2이상이면 
@@ -12,4 +13,10 @@ def solution(food):
     for j in range(len(food)-1,0,-1):
         if food[j] >= 2:
             answer += str(j)*(food[j] // 2)
+            '''
+    #다른 풀이
+    for i in range(1,len(food)):
+        if food[i] >= 2:
+            answer += str(i)*(food[i] // 2)
+    answer += str(0) + answer[::-1] 
     return answer
