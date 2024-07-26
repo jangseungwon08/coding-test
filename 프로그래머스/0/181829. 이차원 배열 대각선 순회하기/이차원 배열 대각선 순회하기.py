@@ -4,6 +4,7 @@ def solution(board, k):
     for i in range(len(board)):
         #그 후 열을 구하기 위해 board[i]번째 행의 열을 구한다.
         for j in range(len(board[i])):
+            #문제에서 i번째 인덱스와 j번째 인덱스가 k보다 작을때만 board[i][j]값을 누적
             if k >= i + j:
                 #answer에 board[i][j]값 누적해서 더해줌
                 answer += board[i][j]
