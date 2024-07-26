@@ -8,7 +8,10 @@ def solution(arr, flag):
             answer += [arr[i]]* arr[i]*2
                 #false이면
         else:
+            '''
             #arr[i]범위만큼 answer배열 마지막 원소값 제거
             for k in range(arr[i]):
                 answer.pop()
+                '''
+            answer = answer[:-arr[i]]
     return answer
