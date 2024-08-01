@@ -1,4 +1,5 @@
 def solution(before, after):
+    '''
     answer = 0
     temp_before = 0
     temp_after = 0
@@ -13,4 +14,11 @@ def solution(before, after):
         answer = 1
     else:
         answer = 0
-    return answer
+    return 0
+        '''
+    before = sorted(before)
+    after = sorted(after)
+    if before == after:
+        return 1
+    else: 
+        return 0
