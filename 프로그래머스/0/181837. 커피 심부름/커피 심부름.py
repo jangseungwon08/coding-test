@@ -1,5 +1,6 @@
 def solution(order):
     answer = 0
+    '''
     #아메리카노 리스트
     americano_list = ["iceamericano", "americanoice", "hotamericano", "americanohot", "americano", "anything"]
     #카페라떼 리스트
@@ -13,5 +14,14 @@ def solution(order):
             #문자열 i가 cafelatte_list에 존재하면
         elif i in cafelatte_list:
             #answer에 5000 누적
+            answer += 5000'''
+    #order문 순회하면서
+    for i in order:
+        #cafelatte문자열이 문자열i에 있으면
+        if "cafelatte" in i:
+            #answer에 5000누적
             answer += 5000
+            #없으면 4500 누적
+        else:
+            answer += 4500
     return answer
