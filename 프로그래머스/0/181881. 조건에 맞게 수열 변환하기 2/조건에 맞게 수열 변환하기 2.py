@@ -21,7 +21,6 @@ def solution(arr):
         #현재 arr리스트 값과 이전 temp_arr의 값이 같으면
         if arr == temp_arr:
             #arr이 한번 더 업데이트 됐다는 뜻이므로 1 감소
-            answer -= 1
             #감소 후 while문 탈출
             break
-    return answer
+    return answer -1
