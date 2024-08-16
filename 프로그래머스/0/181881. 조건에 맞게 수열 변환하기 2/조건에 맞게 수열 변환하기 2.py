@@ -16,11 +16,13 @@ def solution(arr):
             elif 50 > arr[i] and arr[i] % 2:
                 #2곱하고 1더한값을 업데이트
                 arr[i] = (arr[i]*2) + 1
-        #arr 전체 순회를 다 하면 1번 반복 뜻이니까 1 누적
-        answer += 1
         #현재 arr리스트 값과 이전 temp_arr의 값이 같으면
         if arr == temp_arr:
             #arr이 한번 더 업데이트 됐다는 뜻이므로 1 감소
             #감소 후 while문 탈출
             break
-    return answer -1
+            #현재 arr값과 이전 arr의 값(temp_arr)의 값이 다르면
+        else:
+            #업데이트가 됐다는 의미로 간주하고 1 누적
+            answer += 1
+    return answer
