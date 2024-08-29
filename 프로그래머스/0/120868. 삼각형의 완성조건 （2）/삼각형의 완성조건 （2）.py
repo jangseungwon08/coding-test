@@ -1,4 +1,5 @@
 def solution(sides):
+    '''
     answer = 0
     #가장 긴 변이 sides에 있는 경우 , 나머지 한 변이 가장 긴 변인 경우
     maximum = max(sides)
@@ -11,3 +12,10 @@ def solution(sides):
     for _ in range(maximum+1, maximum+minimum):
         answer += 1
     return answer
+    '''
+    #n이 가장 긴 변일 때
+    #n < sum(sides)
+    #max(sides)가 가장 긴 변일 때
+    #n > max(sides) - min(sides)
+    #sum(sides) > n > max(sides) - min(sides) -> 열린범위기 때문에 -1
+    return sum(sides) - max(sides) + min(sides) -1
