@@ -1,4 +1,6 @@
 def solution(arr):
+    '''
+    def solution(arr):
     answer = []
     #일단 처음에는 arr[0]의 값 즉 1이 answer리스트가 비어있으니 들어간다.
     answer.append(arr[0])
@@ -10,3 +12,10 @@ def solution(arr):
             answer.append(arr[i])
             #이렇게하면 arr의 원소들의 순서를 유지할 수 있다.
     return answer
+    '''
+    stack = []
+    for i in arr:
+        #스택이 비어있거나 스택의 마지막 원소가 i와 다르면
+        if not stack or stack[-1] != i:
+            stack.append(i)
+    return stack
