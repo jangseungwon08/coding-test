@@ -13,8 +13,9 @@ def solution(clothes):
         #clothes_dict을 value값을 기준으로 순회하면서
         for i in clothes_dict.values():
             #i의 값에 1을 더해준 값을 answer에 누적 저장
+            #해당 key에 대한 종류를 입지 않는 경우도 생각해야되기 떄문에 1을 더해준다.
             answer *= (i+1)
-        #for문 순회 후 1을 빼줌
+        #for문 순회 후 1을 빼줌(아무런 종류도 입지 않는 경우를 생각해야되기 때문에               1을 빼줘야된다.)
         answer -= 1
     #clothes의 종류가 한개일때는
     else:
