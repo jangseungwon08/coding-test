@@ -1,9 +1,9 @@
 import sys
 input = sys.stdin.readline
-n = int(input().strip())
+n = int(input())
 n_list = []
 for _ in range(n):
-    stack_input = input().strip()
+    stack_input = input()
     if stack_input[0] == '1':
         n_list.append(int(stack_input[2:]))
     elif stack_input[0] == '2':
