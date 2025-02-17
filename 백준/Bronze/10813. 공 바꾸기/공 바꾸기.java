@@ -1,11 +1,10 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         String[] str = br.readLine().split(" ");
         int n = Integer.parseInt(str[0]);
         int m = Integer.parseInt(str[1]);
@@ -23,7 +22,10 @@ public class Main {
             arr[j] = i1;
         }
         for(int a=0; a < arr.length; a++){
-            System.out.print(arr[a] + " ");
+            bw.write(arr[a] + " ");
         }
+        br.close();
+        bw.flush();
+        bw.close();
     }
 }
