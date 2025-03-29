@@ -1,10 +1,14 @@
-N, M = map(int,input().split())
-s = set()
-count = 0
+import sys
+input = sys.stdin.readline
+N, M = map(int, input().strip().split())
+N_set = set()
+M_list = []
+res = 0
 for _ in range(N):
-    s.add(input())
+    N_set.add(input())
 for _ in range(M):
-    input_str = input()
-    if input_str in set(s):
-        count += 1
-print(count)
+    M_list.append(input())
+for i in M_list:
+    if i in N_set:
+        res += 1
+print(res)
