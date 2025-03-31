@@ -1,16 +1,17 @@
-n = int(input())
-n_list = list(map(int,input().split()))
-m = int(input())
-m_list = list(map(int,input().split()))
-ans_list = []
-n_dict = dict()
-for i in n_list:
-    if i in n_dict:
-        n_dict[i] += 1
+import sys
+input = sys.stdin.readline
+N = int(input())
+N_list = list(map(int,input().strip().split()))
+N_dict = {}
+M = int(input())
+M_list = list(map(int,input().strip().split()))
+for i in N_list:
+    if i in N_dict:
+        N_dict[i] += 1
     else:
-        n_dict[i] = 1
-for i in m_list:
-    if i in n_dict:
-        print(n_dict[i], end = ' ')
+        N_dict[i] = 1
+for i in M_list:
+    if i in N_dict:
+        print(N_dict[i], end = ' ')
     else:
         print(0, end = ' ')
