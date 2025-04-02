@@ -1,11 +1,7 @@
-a, b = map(int, input().split())
-a_list = set(map(int,input().split()))
-b_list = set(map(int,input().split()))
-ans_list = []
-for i in a_list:
-    if i not in b_list:
-        ans_list.append(i)
-for j in b_list:
-    if j not in a_list:
-        ans_list.append(i)
-print(len(ans_list))
+import sys
+input = sys.stdin.readline
+
+A, B = map(int, input().strip().split())
+A_Set = set(list(map(int, input().strip().split())))
+B_Set = set(list(map(int, input().strip().split())))
+print(len(A_Set-B_Set) + len(B_Set-A_Set))
