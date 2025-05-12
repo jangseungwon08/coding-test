@@ -1,6 +1,6 @@
 N = int(input())
 N_list = []
-dp = [0] * (N+1)
+dp = [0] * (N)
 for _ in range(N):
     a, b = map(int, input().split())
     N_list.append([a,b])
