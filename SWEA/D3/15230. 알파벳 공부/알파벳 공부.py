@@ -1,12 +1,11 @@
 T = int(input())
-alpha_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
-              'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-for tc in range(1, T+1):
-    s = input()
+alpha = "abcdefghijklmnopqrstuvwxyz"
+for tc in range(1,T+1):
+    compet = input()
     count = 0
-    for i in range(len(s)):
-        if s[i] == alpha_list[i]:
-            count += 1
-        else:
+    for i in range(len(compet)):
+        if compet[i] != alpha[i]:
             break
+        else:
+            count += 1
     print('#'+str(tc), count)
