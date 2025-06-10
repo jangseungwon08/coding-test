@@ -12,13 +12,12 @@ def prime(n):
             while i * j <= n:
                 prime_list[i*j] = False
                 j += 1
-
+prime_list = [True] * ((123456 * 2)+1)
+prime_list[0], prime_list[1] = False, False
+prime(123456*2)
 while True:
     n = int(input())
     if n == 0:
         break
     n2 = 2*n
-    prime_list = [True] * ((123456 * 2)+1)
-    prime_list[0], prime_list[1] = False, False
-    prime(n2)
     print(sum(prime_list[n+1:n2+1]))
