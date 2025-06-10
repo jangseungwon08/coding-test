@@ -1,5 +1,6 @@
 import math
-
+import sys
+input = sys.stdin.readline
 # 에라토스테네스의 체 
 def prime(n):
     # 2부터 sqrt(n) + 1 ==> sqrt(n)까지 
