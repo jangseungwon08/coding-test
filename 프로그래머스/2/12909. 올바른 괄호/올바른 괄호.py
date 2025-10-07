@@ -4,10 +4,10 @@ def solution(s):
         if i == "(":
             stack.append(i)
         elif i == ")":
-            if stack:
-                stack.pop()
-            else:
+            if len(stack) == 0:
                 return False
+            else:
+                stack.pop()
     if stack:
         return False
     else:
