@@ -1,7 +1,6 @@
 from itertools import combinations
 def solution(nums):
     answer = 0
-    nums.sort()
     for iter in combinations(nums, 3):
         if is_prime(sum(iter)):
             answer += 1
