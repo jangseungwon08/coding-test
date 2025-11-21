@@ -2,27 +2,21 @@ import sys
 from collections import Counter
 input = sys.stdin.readline
 N = int(input())
-N_average = 0
-middle = 0
-middle_idx = N // 2
-N_list = []
+num_li = []
 for _ in range(N):
-    N_list.append(int(input()))
-N_average = int(round(sum(N_list)/len(N_list)))
-N_list.sort()
-count = Counter(N_list)
-ans_count = []
-max_num = max((count.values()))
-for k, v in count.items():
-    if v == max_num:
-        ans_count.append(k)
-middle = N_list[middle_idx]
-bound = max(N_list) - min(N_list)
-ans_count.sort()
-print(N_average)
-print(middle)
-if len(ans_count) > 1:
-    print(ans_count[1])
+    num_li.append(int(input()))
+num_li = sorted(num_li)
+print(round(sum(num_li)/N))
+print(num_li[len(num_li)//2])
+counter = Counter(num_li)
+mode_value = counter.most_common(2)
+if len(mode_value) > 1:
+    if mode_value[0][1] == mode_value[1][1]:
+        print(mode_value[1][0])
+    else:
+        print(mode_value[0][0])
 else:
-    print(ans_count[0])
-print(bound)
+    print(mode_value[0][0])
+    
+
+print(num_li[-1] - num_li[0])
