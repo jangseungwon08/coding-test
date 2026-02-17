@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 public class Main {
     static int r, c, maxCount;
     static char[][] arr;
-    static List<Character> isVisited;
+    static boolean[] isVisited;
     //    상우하좌
     static int[] dr = {-1, 0, 1, 0};
     static int[] dc = {0, 1, 0, -1};
@@ -20,14 +20,14 @@ public class Main {
         r = Integer.parseInt(st.nextToken());
         c = Integer.parseInt(st.nextToken());
         arr = new char[r][c];
-        isVisited = new ArrayList<>();
+        isVisited = new boolean[26];
         for (int i = 0; i < r; i++) {
             String s = br.readLine();
             for (int j = 0; j < c; j++) {
                 arr[i][j] = s.charAt(j);
             }
         }
-        isVisited.add(arr[0][0]);
+        isVisited[arr[0][0] - 'A'] = true;
         backTrack(0, 0, 1);
         System.out.println(maxCount);
     }
@@ -41,11 +41,11 @@ public class Main {
             int nc = col + dc[i];
             if (nr >= 0 && nr < r && nc >= 0 && nc < c) {
 //                현재까지 지나온 칸의 알파벳과 달라야됨
-                if (!isVisited.contains(arr[nr][nc])) {
-                    isVisited.add(arr[nr][nc]);
+                if (!isVisited[arr[nr][nc] - 'A']) {
+                    isVisited[arr[nr][nc] - 'A'] = true;
                     backTrack(nr, nc, cnt + 1);
 //                    들어갔다 나온 값 다시 remove해줘야지 다음 탐색 방해 x
-                    isVisited.remove(isVisited.size()-1);
+                    isVisited[arr[nr][nc] - 'A'] = false;
                 }
             }
         }
