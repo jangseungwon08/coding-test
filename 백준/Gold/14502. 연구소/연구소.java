@@ -9,6 +9,7 @@ public class Main {
     static int[] dr = {-1,1,0,0};
     static int[] dc = {0,0,-1,1};
     static int n, m;
+    static List<int[]> virusList = new ArrayList<>();
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -20,6 +21,10 @@ public class Main {
             st = new StringTokenizer(br.readLine());
             for(int j = 0; j < m; j++){
                 graph[i][j] = Integer.parseInt(st.nextToken());
+//                메모리 최적화
+                if(graph[i][j] == 2){
+                    virusList.add(new int[] {i,j});
+                }
             }
         }
         dfs(0);
@@ -42,18 +47,16 @@ public class Main {
         }
     }
     static void bfs(){
-        Queue<int[]> q = new ArrayDeque<>();
         int cnt = 0;
         int[][] copyArr = new int[n][m];
         for (int i = 0; i < n; i++) {
-            copyArr[i] = graph[i].clone(); // 행 단위로 clone을 해야 완벽히 복사됨
-        }
-        for(int i = 0; i< n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (copyArr[i][j] == 2) {
-                    q.offer(new int[]{i, j});
-                }
+            for(int j = 0; j< m; j++){
+                copyArr[i][j] = graph[i][j];
             }
+        }
+        Queue<int[]> q = new ArrayDeque<>();
+        for(int[] virus : virusList) {
+            q.offer(new int[]{virus[0], virus[1]});
         }
             while(!q.isEmpty()) {
                 int[] current = q.poll();
