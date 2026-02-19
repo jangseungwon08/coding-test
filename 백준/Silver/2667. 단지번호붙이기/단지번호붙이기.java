@@ -20,7 +20,6 @@ public class Main {
             }
         }
         Queue<int[]> q = new ArrayDeque<>();
-        int buildingCount = 0;
         int buildingNum = 1;
         List<Integer> buildings = new ArrayList<>();
         for(int i = 0; i< n; i++){
@@ -29,7 +28,6 @@ public class Main {
                 if(arr[i][j] == 1){
                     q.offer(new int [] {i, j});
                     buildingNum++;
-                    buildingCount++;
                     arr[i][j] = buildingNum;
                 }
                 while(!q.isEmpty()){
@@ -51,10 +49,8 @@ public class Main {
                 if(count > 0) buildings.add(count);
             }
         }
-        System.out.println(buildingCount);
+        System.out.println(buildings.size());
         Collections.sort(buildings);
-        for(int i = 0; i< buildings.size(); i++){
-            System.out.println(buildings.get(i));
-        }
+        buildings.forEach(System.out::println);
     }
 }
