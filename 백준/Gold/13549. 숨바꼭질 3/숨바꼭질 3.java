@@ -9,7 +9,7 @@ public class Main {
     static int subin, bro;
     static int[] count;
     public static void main(String[] args) throws IOException {
-//        간선에 대한 가중치 없고 DFS(백트래킹)을 이용한 완전탐색은 만약 노드가 0, 100_000이면 시간초과?
+//        DFS(백트래킹)을 이용한 완전탐색은 만약 노드가 0, 100_000이면 시간초과?
 //        BFS를 이용한 완전 탐색
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -19,7 +19,7 @@ public class Main {
         System.out.println(count[bro]);
     }
     static void bfs(int start){
-        Queue<Integer> q = new ArrayDeque<>();
+        Deque<Integer> q = new ArrayDeque<>();
         q.offer(start);
         count = new int[100_001];
         isVisited[start] = true;
@@ -33,24 +33,23 @@ public class Main {
             way[0] = current*2;
             way[1] = current-1;
             way[2] = current+1;
-            for(int i = 0; i< 3; i++){
-//                더하거나 뺀 값이 0 이상 10만 이하이면
-                if(way[i] >= 0 && way[i] <=100_000){
-//                    조건을 어떻게 줘야되지? -> count배열이랑 isVisited배열을 두개 둬서 비교
-                    if(!isVisited[way[i]]){
-                       if(i == 0) {
-                           isVisited[way[i]] = true;
-                           count[way[i]] = count[current];
-                           q.offer(way[i]);
-                       }
-                       else {
-                           isVisited[way[i]] = true;
-                           count[way[i]] = count[current] +1;
-                           q.offer(way[i]);
-                       }
-                    }
-                }
-              }
-          }
-      }
-  }
+//            *2일때 우선순위 1
+            if(way[0] >= 0 && way[0] <=100_000 && !isVisited[way[0]]){
+                q.addFirst(way[0]);
+                isVisited[way[0]] = true;
+                count[way[0]] = count[current];
+            }
+//            -1일때 우선순위 2
+            if(way[1] >= 0 && way[1] <=100_000 && !isVisited[way[1]]){
+                q.addLast(way[1]);
+                isVisited[way[1]] = true;
+                count[way[1]] = count[current] + 1;
+            }
+            if(way[2] >= 0 && way[2] <=100_000 && !isVisited[way[2]]){
+                q.addLast(way[2]);
+                isVisited[way[2]] = true;
+                count[way[2]] = count[current] + 1;
+            }
+        }
+    }
+    }
