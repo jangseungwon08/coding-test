@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -6,31 +5,33 @@ import java.util.*;
 
 public class Main {
     static int n;
-    static boolean[] isVisited;
+    static StringBuilder sb;
     static List<Integer> arr;
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static boolean[] isVisited;
+    public static void main(String[] args) throws IOException{
+        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
         n = Integer.parseInt(br.readLine());
-        isVisited = new boolean[n+1];
+        sb = new StringBuilder();
         arr = new ArrayList<>();
-        backTrack(0);
+        isVisited = new boolean[n];
+        dfs(0);
+        System.out.println(sb.toString());
     }
-    static void backTrack(int depth){
-        if (depth == n) {
-            for (int val : arr) {
-                System.out.print(val + " ");
+    static void dfs(int depth){
+        if(depth == n){
+            for(int i = 0; i< n ; i++){
+                sb.append(arr.get(i)).append(" ");
             }
-            System.out.println();
-            return; // 여기서는 arr 조작 없이 깔끔하게 return만!
+            sb.append("\n");
+            return;
         }
-        for(int i = 1; i<= n; i++){
+        for(int i = 0; i<n; i++){
             if(!isVisited[i]){
-                arr.add(i);
                 isVisited[i] = true;
-                backTrack(depth+1);
-
-                arr.remove(arr.size()-1);
+                arr.add(i+1);
+                dfs(depth+1);
                 isVisited[i] = false;
+                arr.remove(arr.size()-1);
             }
         }
     }
