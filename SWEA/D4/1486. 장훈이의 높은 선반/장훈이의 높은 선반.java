@@ -1,44 +1,40 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Solution {
+    static int n,b;
+    static int count;
     static int[] arr;
-    static int n, b;
-    static boolean[] isVisited;
-    static int maxSum;
     public static void main(String[] args) throws IOException {
-        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
-        int t = Integer.parseInt(br.readLine());
-        for(int tc = 1; tc <= t; tc++){
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int T = Integer.parseInt(br.readLine());
+        for(int tc= 1; tc<=T; tc++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            n = Integer.parseInt(st.nextToken());
-            b = Integer.parseInt(st.nextToken());
-            arr = new int[n];
-            isVisited = new boolean[n];
-            st = new StringTokenizer(br.readLine());
-            for(int i = 0; i< n; i++){
-                arr[i] = Integer.parseInt(st.nextToken());
-            }
-            maxSum = Integer.MAX_VALUE;
-            powerSet(0,0);
-            System.out.println("#" + tc + " " + (maxSum - b));
+             n = Integer.parseInt(st.nextToken());
+             b = Integer.parseInt(st.nextToken());
+             count = Integer.MAX_VALUE;
+             arr= new int[n];
+             st = new StringTokenizer(br.readLine());
+             for(int i = 0; i< n; i++){
+                 arr[i] = Integer.parseInt(st.nextToken());
+             }
+             combinations(0,0);
+            System.out.println("#" + tc + " " + (count - b));
         }
     }
-    static void powerSet(int depth, int sum){
-        if(depth == n) {
-//            b보다 크고 maxSum보다 작으면
-            if (sum >= b && maxSum > sum) {
-                maxSum = sum;
+    static void combinations(int depth, int val){
+//        뽑았으면
+        if(depth == n){
+//            b보다 크거나 같고 val이 count보다 작으면
+            if(val >= b && val < count) {
+                count = val;
             }
             return;
         }
-//        뽑는 경우
-        isVisited[depth] = true;
-        powerSet(depth+1, sum + arr[depth]);
-//        안뽑는 경우
-        isVisited[depth] = false;
-        powerSet(depth+1, sum);
-        }
+
+        combinations(depth+1, val+ arr[depth]);
+        combinations(depth+1, val);
+    }
 }
