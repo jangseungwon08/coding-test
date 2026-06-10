@@ -1,16 +1,13 @@
+import java.util.*;
+
 class Solution {
     public String solution(String s) {
-        String[] res = s.split(" ");
-        int max = Integer.MIN_VALUE;
-        int min = Integer.MAX_VALUE;
-        for(int i = 0; i< res.length; i++){
-            int num = Integer.parseInt(res[i]);
-            max = Math.max(max, num);
-            min = Math.min(min, num);
+        StringTokenizer st = new StringTokenizer(s);
+        List<Integer> arr = new ArrayList<>();
+        while(st.hasMoreTokens()){
+            arr.add(Integer.parseInt(st.nextToken()));
         }
-        String answer = "";
-        answer += min + " ";
-        answer += max;
+        String answer = Collections.min(arr) + " " + Collections.max(arr);
         return answer;
     }
 }
